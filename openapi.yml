@@ -42,6 +42,9 @@ paths:
           application/json:
             schema: 
               $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          Success
     put:
       tags:
         - pet
@@ -195,11 +198,3 @@ components:
       description: Pet object that needs to be added to the store
       required: true
     UserArray:
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
-      description: List of user object
-      required: true
