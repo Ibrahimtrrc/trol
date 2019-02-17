@@ -40,10 +40,8 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/Pet'
-                - $ref: '#/components/schemas/User'
+            schema: 
+              $ref: '#/components/schemas/Pet'
     put:
       tags:
         - pet
@@ -61,7 +59,10 @@ paths:
             - 'write:pets'
             - 'read:pets'
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
 components:
   schemas:
     Order:
@@ -202,16 +203,3 @@ components:
               $ref: '#/components/schemas/User'
       description: List of user object
       required: true
-  securitySchemes:
-    petstore_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
-          scopes:
-            'write:pets': modify pets in your account
-            'read:pets': read your pets
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header
